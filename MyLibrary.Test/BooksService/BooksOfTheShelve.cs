@@ -12,10 +12,13 @@ public class LibraryServiceTests
     public void GetBooksThatAreOffTheShelf_ReturnsBooksWithNoShelfAssigned()
     {
         // Arrange
-        var bookOnShelf = new Book { Shelf = new Shelf { Id = 1, Name = "A0" } };
-        var bookOffShelf = new Book { Shelf = null };
+
+        var books = new List<Book>{
+            new Book { Shelf = new Shelf { Id = 1, Name = "A0" } },
+            new Book { Shelf = null } };
+
         var mockBooks = new Mock<IQueryable<Book>>();
-        mockBooks.Setup(m => m.ToList()).Returns(new List<Book> { bookOnShelf, bookOffShelf });
+        mockBooks.Setup(m => m.ToList()).Returns(books);
 
         var mockContext = new Mock<IMyLibraryDb>();
         mockContext.Setup(c => c.Books).Returns((DbSet<Book>)mockBooks.Object);
