@@ -17,7 +17,6 @@ namespace MyLibrary.Inrastructure
             modelBuilder.Entity<Book>()
                 .Navigation(e => e.Shelf)
                 .AutoInclude();
-
         }
     }
 }
