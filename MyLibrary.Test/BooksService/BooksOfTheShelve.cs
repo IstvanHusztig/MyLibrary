@@ -30,6 +30,6 @@ public class LibraryServiceTests
 
         // Assert
         booksOffShelf.Should().Contain(b => b.Shelf == null);
-        booksOffShelf.Should().NotContain(bookOnShelf); 
+        booksOffShelf.Should().NotContain(books[0]); 
     }
 }
